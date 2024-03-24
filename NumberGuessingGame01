@@ -1,0 +1,75 @@
+#include<iostream>
+#include<cstdlib>
+#include<time.h>
+using namespace std;
+int main()
+{
+    int num,i,temp,rpt,lvl,chance,over=0;
+    srand(time(0));
+    cout<<"\n\t----------NUMBER GUESSING GAME----------";
+    cout<<"\n Welcome ,You have to Guess a Number Between 1 to 100";
+    do
+    {    
+        num=rand()%100;
+        cout<<"\nSelect a Mode :\n1 - EASY (20 Chances)";
+        cout<<"\n2 - MEDIUM (10 Chances)\n3 -HARD (5 Chances)"<<endl;
+        cin>>lvl;
+        switch(lvl)
+        {
+            case 1:
+                chance=20;
+                break;
+            case 2:
+                chance=10;
+                break;
+            case 3:
+                chance=5;
+                break;
+            default:
+                cout<<"\nWRONG CHOICE";
+
+        }
+        cout<<"\nGUESS NOW !!!\n";
+        for(i=chance;i>=1;i--)
+        {
+            cin>>temp;
+            if(temp-num>=-5 && temp - num<0)
+            {
+                cout<<"\nLOW";
+                cout<<"\n"<<i-1<<" Chances Left"<<endl;
+            }
+            else if(temp-num<=5 && temp-num>0)
+            {
+                cout<<"\nHIGH";
+                cout<<"\n"<<i-1<<" Chances Left"<<endl;
+            }
+            else if(temp-num<-5)
+            {
+                cout<<"\nTOO LOW";
+                cout<<"\n"<<i-1<<" Chances Left"<<endl;
+            }
+            else if(temp-num>5)
+            {
+                cout<<"\nTOO HIGH";
+                cout<<"\n"<<i-1<<" Chances Left"<<endl;
+            }
+            else
+            {
+                cout<<"' CORRECT GUESS '"<<endl;
+                over++;
+                break;
+            }        
+        }
+        if(over==0)
+        {
+            cout<<"\nSORRY , YOUR CHANCE IS OVER";
+        }
+        else
+        {
+            cout<<"\nCONGRATULATIONS ";
+        }     
+        cout<<"\nDo You Want to Play Again :(PRESS 1)  ";
+        cin>>rpt;
+    } while(rpt==1);
+    return 0;
+}
